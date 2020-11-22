@@ -14,6 +14,7 @@ namespace DanceClub.Forms
     {
         int ID;
         bool edit;
+        private bool isChecked = false;
 
         public GroupEditForm()
         {
@@ -48,20 +49,65 @@ namespace DanceClub.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!edit)
+            CheckAll();
+            if (isChecked)
             {
-                classesTableAdapter.InsertQuery(nameTextBox.Text, Convert.ToInt32(costTextBox.Text),
-                    Convert.ToInt32(teacherComboBox.SelectedValue), Convert.ToInt32(ageComboBox.SelectedValue), 
-                    Convert.ToInt32(styleComboBox.SelectedValue));
+                if (!edit)
+                {
+                    classesTableAdapter.InsertQuery(nameTextBox.Text, Convert.ToInt32(costTextBox.Text),
+                        Convert.ToInt32(teacherComboBox.SelectedValue), Convert.ToInt32(ageComboBox.SelectedValue),
+                        Convert.ToInt32(styleComboBox.SelectedValue));
+                }
+                else
+                {
+                    classesTableAdapter.UpdateQuery(nameTextBox.Text, Convert.ToInt32(costTextBox.Text),
+                        Convert.ToInt32(teacherComboBox.SelectedValue), Convert.ToInt32(ageComboBox.SelectedValue),
+                        Convert.ToInt32(styleComboBox.SelectedValue), ID);
+                }
+                Close();
+            }
+        }
+
+        //Проверки.
+        private bool CheckNotNull()
+        {
+            if (nameTextBox.Text == "" || costTextBox.Text == "" || ageComboBox.Text == "" ||
+                styleComboBox.Text == "" || teacherComboBox.Text == "")
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool CheckPrice()
+        {
+            string Str = costTextBox.Text.Trim();
+            int Num;
+            bool isNum = int.TryParse(Str, out Num);
+            if (isNum)
+            {
+                return true;
             }
             else
             {
-                classesTableAdapter.UpdateQuery(nameTextBox.Text, Convert.ToInt32(costTextBox.Text),
-                    Convert.ToInt32(teacherComboBox.SelectedValue),Convert.ToInt32(ageComboBox.SelectedValue), 
-                    Convert.ToInt32(styleComboBox.SelectedValue), ID);
+                return false;
             }
+        }
 
-            Close();
+        private void CheckAll()
+        {
+            if (!CheckPrice())
+            {
+                MessageBox.Show("Невірно введено ціну.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else if (!CheckNotNull())
+            {
+                MessageBox.Show("Не всі поля заповнені.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else
+            {
+                isChecked = true;
+            }
         }
 
         private void fillBy1ToolStripButton_Click(object sender, EventArgs e)

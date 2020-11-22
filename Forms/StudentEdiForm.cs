@@ -12,8 +12,9 @@ namespace DanceClub.Forms
 {
     public partial class StudentEditForm : Form
     {
-        int ID;
-        bool edit;
+        private int ID;
+        private bool edit;
+        private bool isChecked = false;
         public StudentEditForm()
         {
             InitializeComponent();
@@ -43,21 +44,85 @@ namespace DanceClub.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!edit)
+            CheckAll();
+            if (isChecked)
             {
-                studentsTableAdapter.InsertQuery(firstNameTextBox.Text, secondNameTextBox.Text, thirdNameTextBox.Text,
-                    genderComboBox.Text, dateTimePicker1.Value, 
-                    adressTextBox.Text, phoneTextBox.Text);
+                if (!edit)
+                {
+                    studentsTableAdapter.InsertQuery(firstNameTextBox.Text, secondNameTextBox.Text, thirdNameTextBox.Text,
+                        genderComboBox.Text, dateTimePicker1.Value,
+                        adressTextBox.Text, phoneTextBox.Text);
 
+                }
+                else
+                {
+                    studentsTableAdapter.UpdateQuery(firstNameTextBox.Text, secondNameTextBox.Text, thirdNameTextBox.Text,
+                        genderComboBox.Text, dateTimePicker1.Value,
+                        adressTextBox.Text, phoneTextBox.Text, ID);
+                }
+                Close();
+            }
+            
+        }
+        // Проверки.
+        private bool CheckPhone()
+        {
+            if (phoneTextBox.Text.Length > 10)
+            {
+                return false;
             }
             else
             {
-                studentsTableAdapter.UpdateQuery(firstNameTextBox.Text, secondNameTextBox.Text, thirdNameTextBox.Text,
-                    genderComboBox.Text, dateTimePicker1.Value, 
-                    adressTextBox.Text, phoneTextBox.Text, ID);
+                string Str = phoneTextBox.Text.Trim();
+                int Num;
+                bool isNum = int.TryParse(Str, out Num);
+                if (isNum)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
+        }
 
-            Close();
+        private bool CheckGender()
+        {
+            if (genderComboBox.Text == "ч" || genderComboBox.Text == "ж")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool CheckNotNull()
+        {
+            if (firstNameTextBox.Text == "" || secondNameTextBox.Text == "" || thirdNameTextBox.Text == "" ||
+                genderComboBox.Text == "" || adressTextBox.Text == "" || phoneTextBox.Text == "")
+            {
+                return false;
+            }
+            return true;
+        }
+        private void CheckAll()
+        {
+            if (!CheckPhone())
+            {
+                MessageBox.Show("Невірно введено номер.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else if (!CheckGender())
+            {
+                MessageBox.Show("Стать має бути ч або ж.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else if (!CheckNotNull())
+            {
+                MessageBox.Show("Не всі поля заповнені.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else
+            {
+                isChecked = true;
+            }
         }
     }
 }

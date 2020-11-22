@@ -12,9 +12,9 @@ namespace DanceClub.Forms
 {
     public partial class WorkoutEditForm : Form
     {
-        int ID;
-        bool edit;
-
+        private int ID;
+        private bool edit;
+        private bool isChecked = false;
         public WorkoutEditForm()
         {
             InitializeComponent();
@@ -55,16 +55,25 @@ namespace DanceClub.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!edit)
+            if (!CheckTime())
             {
-                workoutsTableAdapter.InsertQuery(Convert.ToString(dayComboBox.SelectedValue),
-                    Convert.ToInt32(groupComboBox.SelectedValue), TimeSpan.Parse(timeTextBox.Text));
+                MessageBox.Show("Час має розділятися знаком ':'.", "Error", MessageBoxButtons.OKCancel);
+                //this.Show();
             }
             else
             {
-                workoutsTableAdapter.UpdateQuery(Convert.ToString(dayComboBox.SelectedValue),
-                    Convert.ToInt32(groupComboBox.SelectedValue), TimeSpan.Parse(timeTextBox.Text), ID);
+                if (!edit)
+                {
+                    workoutsTableAdapter.InsertQuery(Convert.ToString(dayComboBox.SelectedValue),
+                        Convert.ToInt32(groupComboBox.SelectedValue), TimeSpan.Parse(timeTextBox.Text));
+                }
+                else
+                {
+                    workoutsTableAdapter.UpdateQuery(Convert.ToString(dayComboBox.SelectedValue),
+                        Convert.ToInt32(groupComboBox.SelectedValue), TimeSpan.Parse(timeTextBox.Text), ID);
+                }
             }
+            
             
 
             //if (!edit)
@@ -79,6 +88,59 @@ namespace DanceClub.Forms
             //}
 
             //Close();
+        }
+
+        //Проверки.
+        private bool CheckTime()
+        {
+            string str = timeTextBox.Text;
+            if (str.Length <= 3) return false;
+            if (str[2] == ':')
+            {
+                string[] words = timeTextBox.Text.Split(new char[] { ':' });
+                string Str1 = words[0].Trim();
+                string Str2 = words[1].Trim();
+                int Num;
+                bool isNum1 = int.TryParse(Str1, out Num);
+                bool isNum2 = int.TryParse(Str2, out Num);
+                if (isNum1 && isNum2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool CheckNotNull()
+        {
+            if (groupComboBox.Text == "" || dayComboBox.Text == "" || timeTextBox.Text == "")
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void CheckAll()
+        {
+            if (!CheckTime())
+            {
+                MessageBox.Show("Невірно введено час.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else if (!CheckNotNull())
+            {
+                MessageBox.Show("Не всі поля заповнені.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else
+            {
+                isChecked = true;
+            }
         }
     }
 }

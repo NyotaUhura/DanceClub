@@ -45,49 +45,42 @@ namespace DanceClub
 
         private void учніToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bindingNavigator1.BindingSource = studentsBindingSource;
             dataGridView1.DataSource = studentsBindingSource;
             tableNameLable.Text = "Учні";
         }
 
         private void групиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bindingNavigator1.BindingSource = classesBindingSource;
             dataGridView1.DataSource = classesBindingSource;
             tableNameLable.Text = "Групи";
         }
 
         private void заняттяToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bindingNavigator1.BindingSource = workoutsBindingSource;
             dataGridView1.DataSource = workoutsBindingSource;
             tableNameLable.Text = "Заняття";
         }
 
         private void викладачіToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bindingNavigator1.BindingSource = teachersBindingSource;
             dataGridView1.DataSource = teachersBindingSource;
             tableNameLable.Text = "Викладачі";
         }
 
         private void студентгрупаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bindingNavigator1.BindingSource = studentgroupBindingSource;
             dataGridView1.DataSource = studentgroupBindingSource;
             tableNameLable.Text = "Студент-група";
         }
 
         private void стиліТанцюToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bindingNavigator1.BindingSource = stylesBindingSource;
             dataGridView1.DataSource = stylesBindingSource;
             tableNameLable.Text = "Стилі танцю";
         }
 
         private void віковіКатегоріїToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            bindingNavigator1.BindingSource = agecategoriesBindingSource;
             dataGridView1.DataSource = agecategoriesBindingSource;
             tableNameLable.Text = "Вікові категорії";
         }

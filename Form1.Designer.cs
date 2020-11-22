@@ -50,28 +50,6 @@
             this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новийУченьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tableNameLable = new System.Windows.Forms.Label();
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.classesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.workoutsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.teachersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.studentgroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.agecategoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.stylesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.danceclubdbDataSet = new DanceClub.danceclubdbDataSet();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secondnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.thirdnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +57,16 @@
             this.birthdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.adressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.danceclubdbDataSet = new DanceClub.danceclubdbDataSet();
+            this.tableNameLable = new System.Windows.Forms.Label();
+            this.classesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.workoutsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.teachersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.studentgroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.agecategoriesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.stylesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.studentsTableAdapter = new DanceClub.danceclubdbDataSetTableAdapters.studentsTableAdapter();
             this.classesTableAdapter = new DanceClub.danceclubdbDataSetTableAdapters.classesTableAdapter();
             this.workoutsTableAdapter = new DanceClub.danceclubdbDataSetTableAdapters.workoutsTableAdapter();
@@ -89,16 +77,14 @@
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.danceclubdbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.classesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workoutsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentgroupBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.agecategoriesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stylesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.danceclubdbDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -247,144 +233,7 @@
             this.dataGridView1.DataSource = this.studentsBindingSource;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            // 
-            // studentsBindingSource
-            // 
-            this.studentsBindingSource.DataMember = "students";
-            this.studentsBindingSource.DataSource = this.bindingSource1;
-            // 
-            // tableNameLable
-            // 
-            resources.ApplyResources(this.tableNameLable, "tableNameLable");
-            this.tableNameLable.Name = "tableNameLable";
-            // 
-            // bindingNavigator1
-            // 
-            this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
-            resources.ApplyResources(this.bindingNavigator1, "bindingNavigator1");
-            this.bindingNavigator1.BindingSource = this.studentsBindingSource;
-            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bindingNavigator1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.bindingNavigatorAddNewItem, "bindingNavigatorAddNewItem");
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            resources.ApplyResources(this.bindingNavigatorCountItem, "bindingNavigatorCountItem");
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.bindingNavigatorDeleteItem, "bindingNavigatorDeleteItem");
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            // 
-            // bindingNavigatorMoveFirstItem
-            // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.bindingNavigatorMoveFirstItem, "bindingNavigatorMoveFirstItem");
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            // 
-            // bindingNavigatorMovePreviousItem
-            // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.bindingNavigatorMovePreviousItem, "bindingNavigatorMovePreviousItem");
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            // 
-            // bindingNavigatorSeparator
-            // 
-            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            resources.ApplyResources(this.bindingNavigatorSeparator, "bindingNavigatorSeparator");
-            // 
-            // bindingNavigatorPositionItem
-            // 
-            resources.ApplyResources(this.bindingNavigatorPositionItem, "bindingNavigatorPositionItem");
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            resources.ApplyResources(this.bindingNavigatorSeparator1, "bindingNavigatorSeparator1");
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.bindingNavigatorMoveNextItem, "bindingNavigatorMoveNextItem");
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(this.bindingNavigatorMoveLastItem, "bindingNavigatorMoveLastItem");
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            resources.ApplyResources(this.bindingNavigatorSeparator2, "bindingNavigatorSeparator2");
-            // 
-            // classesBindingSource
-            // 
-            this.classesBindingSource.DataMember = "classes";
-            this.classesBindingSource.DataSource = this.bindingSource1;
-            // 
-            // workoutsBindingSource
-            // 
-            this.workoutsBindingSource.DataMember = "workouts";
-            this.workoutsBindingSource.DataSource = this.bindingSource1;
-            // 
-            // teachersBindingSource
-            // 
-            this.teachersBindingSource.DataMember = "teachers";
-            this.teachersBindingSource.DataSource = this.bindingSource1;
-            // 
-            // studentgroupBindingSource
-            // 
-            this.studentgroupBindingSource.DataMember = "student_group";
-            this.studentgroupBindingSource.DataSource = this.bindingSource1;
-            // 
-            // agecategoriesBindingSource
-            // 
-            this.agecategoriesBindingSource.DataMember = "age_categories";
-            this.agecategoriesBindingSource.DataSource = this.bindingSource1;
-            // 
-            // stylesBindingSource
-            // 
-            this.stylesBindingSource.DataMember = "styles";
-            this.stylesBindingSource.DataSource = this.bindingSource1;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = this.danceclubdbDataSet;
-            this.bindingSource1.Position = 0;
-            // 
-            // danceclubdbDataSet
-            // 
-            this.danceclubdbDataSet.DataSetName = "danceclubdbDataSet";
-            this.danceclubdbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // firstnameDataGridViewTextBoxColumn
             // 
@@ -428,6 +277,56 @@
             resources.ApplyResources(this.phoneDataGridViewTextBoxColumn, "phoneDataGridViewTextBoxColumn");
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             // 
+            // studentsBindingSource
+            // 
+            this.studentsBindingSource.DataMember = "students";
+            this.studentsBindingSource.DataSource = this.bindingSource1;
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = this.danceclubdbDataSet;
+            this.bindingSource1.Position = 0;
+            // 
+            // danceclubdbDataSet
+            // 
+            this.danceclubdbDataSet.DataSetName = "danceclubdbDataSet";
+            this.danceclubdbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tableNameLable
+            // 
+            resources.ApplyResources(this.tableNameLable, "tableNameLable");
+            this.tableNameLable.Name = "tableNameLable";
+            // 
+            // classesBindingSource
+            // 
+            this.classesBindingSource.DataMember = "classes";
+            this.classesBindingSource.DataSource = this.bindingSource1;
+            // 
+            // workoutsBindingSource
+            // 
+            this.workoutsBindingSource.DataMember = "workouts";
+            this.workoutsBindingSource.DataSource = this.bindingSource1;
+            // 
+            // teachersBindingSource
+            // 
+            this.teachersBindingSource.DataMember = "teachers";
+            this.teachersBindingSource.DataSource = this.bindingSource1;
+            // 
+            // studentgroupBindingSource
+            // 
+            this.studentgroupBindingSource.DataMember = "student_group";
+            this.studentgroupBindingSource.DataSource = this.bindingSource1;
+            // 
+            // agecategoriesBindingSource
+            // 
+            this.agecategoriesBindingSource.DataMember = "age_categories";
+            this.agecategoriesBindingSource.DataSource = this.bindingSource1;
+            // 
+            // stylesBindingSource
+            // 
+            this.stylesBindingSource.DataMember = "styles";
+            this.stylesBindingSource.DataSource = this.bindingSource1;
+            // 
             // studentsTableAdapter
             // 
             this.studentsTableAdapter.ClearBeforeFill = true;
@@ -460,7 +359,6 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.tableNameLable);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
@@ -472,17 +370,14 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
-            this.bindingNavigator1.ResumeLayout(false);
-            this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.danceclubdbDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.classesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.workoutsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teachersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentgroupBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.agecategoriesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stylesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.danceclubdbDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,18 +405,6 @@
         private System.Windows.Forms.Label tableNameLable;
         private System.Windows.Forms.BindingSource studentsBindingSource;
         private danceclubdbDataSetTableAdapters.studentsTableAdapter studentsTableAdapter;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.BindingSource classesBindingSource;
         private danceclubdbDataSetTableAdapters.classesTableAdapter classesTableAdapter;
         private System.Windows.Forms.BindingSource workoutsBindingSource;
