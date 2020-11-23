@@ -64,6 +64,7 @@ namespace DanceClub.Forms
             }
             
         }
+
         // Проверки.
         private bool CheckPhone()
         {

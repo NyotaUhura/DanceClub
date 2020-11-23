@@ -32,15 +32,6 @@ namespace DanceClub.Forms
             timeTextBox.Text = time.ToString(); 
 
         }
-        //public WorkoutEditForm(int id, string day_id, int group_id, string time) : this()
-        //{
-        //    edit = true;
-        //    ID = id;
-        //    groupComboBox.Text = group_id.ToString();
-        //    dayComboBox.Text = day_id;
-        //    timeTextBox.Text = time;
-
-        //}
 
         private void WorkoutEditForm_Load(object sender, EventArgs e)
         {
