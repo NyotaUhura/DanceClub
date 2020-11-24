@@ -47,7 +47,13 @@
             this.редагуватиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.видалитиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.запитиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.кількістьУчнівУШколіToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.групиЗаДнямиТижняToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.групиУВикладачівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.групиЗаСтилямиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проРоботуКлубаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проГрупуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новийУченьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +90,16 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.sortLabel = new System.Windows.Forms.Label();
+            this.sortButton = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
@@ -213,22 +229,71 @@
             // 
             // запитиToolStripMenuItem
             // 
+            this.запитиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.кількістьУчнівУШколіToolStripMenuItem,
+            this.групиЗаДнямиТижняToolStripMenuItem,
+            this.групиУВикладачівToolStripMenuItem,
+            this.групиЗаСтилямиToolStripMenuItem});
             this.запитиToolStripMenuItem.Name = "запитиToolStripMenuItem";
             resources.ApplyResources(this.запитиToolStripMenuItem, "запитиToolStripMenuItem");
             this.запитиToolStripMenuItem.Click += new System.EventHandler(this.правкаToolStripMenuItem_Click);
             // 
+            // кількістьУчнівУШколіToolStripMenuItem
+            // 
+            this.кількістьУчнівУШколіToolStripMenuItem.Name = "кількістьУчнівУШколіToolStripMenuItem";
+            resources.ApplyResources(this.кількістьУчнівУШколіToolStripMenuItem, "кількістьУчнівУШколіToolStripMenuItem");
+            this.кількістьУчнівУШколіToolStripMenuItem.Click += new System.EventHandler(this.кількістьУчнівУШколіToolStripMenuItem_Click);
+            // 
+            // групиЗаДнямиТижняToolStripMenuItem
+            // 
+            this.групиЗаДнямиТижняToolStripMenuItem.Name = "групиЗаДнямиТижняToolStripMenuItem";
+            resources.ApplyResources(this.групиЗаДнямиТижняToolStripMenuItem, "групиЗаДнямиТижняToolStripMenuItem");
+            this.групиЗаДнямиТижняToolStripMenuItem.Click += new System.EventHandler(this.групиЗаДнямиТижняToolStripMenuItem_Click);
+            // 
+            // групиУВикладачівToolStripMenuItem
+            // 
+            this.групиУВикладачівToolStripMenuItem.Name = "групиУВикладачівToolStripMenuItem";
+            resources.ApplyResources(this.групиУВикладачівToolStripMenuItem, "групиУВикладачівToolStripMenuItem");
+            this.групиУВикладачівToolStripMenuItem.Click += new System.EventHandler(this.групиУВикладачівToolStripMenuItem_Click);
+            // 
+            // групиЗаСтилямиToolStripMenuItem
+            // 
+            this.групиЗаСтилямиToolStripMenuItem.Name = "групиЗаСтилямиToolStripMenuItem";
+            resources.ApplyResources(this.групиЗаСтилямиToolStripMenuItem, "групиЗаСтилямиToolStripMenuItem");
+            this.групиЗаСтилямиToolStripMenuItem.Click += new System.EventHandler(this.групиЗаСтилямиToolStripMenuItem_Click);
+            // 
             // звітиToolStripMenuItem
             // 
+            this.звітиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.проРоботуКлубаToolStripMenuItem,
+            this.проГрупуToolStripMenuItem});
             this.звітиToolStripMenuItem.Name = "звітиToolStripMenuItem";
             resources.ApplyResources(this.звітиToolStripMenuItem, "звітиToolStripMenuItem");
+            // 
+            // проРоботуКлубаToolStripMenuItem
+            // 
+            this.проРоботуКлубаToolStripMenuItem.Name = "проРоботуКлубаToolStripMenuItem";
+            resources.ApplyResources(this.проРоботуКлубаToolStripMenuItem, "проРоботуКлубаToolStripMenuItem");
+            this.проРоботуКлубаToolStripMenuItem.Click += new System.EventHandler(this.проРоботуКлубаToolStripMenuItem_Click);
+            // 
+            // проГрупуToolStripMenuItem
+            // 
+            this.проГрупуToolStripMenuItem.Name = "проГрупуToolStripMenuItem";
+            resources.ApplyResources(this.проГрупуToolStripMenuItem, "проГрупуToolStripMenuItem");
+            this.проГрупуToolStripMenuItem.Click += new System.EventHandler(this.проГрупуToolStripMenuItem_Click);
             // 
             // новийУченьToolStripMenuItem
             // 
             this.новийУченьToolStripMenuItem.Name = "новийУченьToolStripMenuItem";
             resources.ApplyResources(this.новийУченьToolStripMenuItem, "новийУченьToolStripMenuItem");
+            this.новийУченьToolStripMenuItem.Click += new System.EventHandler(this.новийУченьToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AllowUserToResizeRows = false;
             resources.ApplyResources(this.dataGridView1, "dataGridView1");
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -242,6 +307,7 @@
             this.phoneDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.studentsBindingSource;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
@@ -250,42 +316,49 @@
             this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "first_name";
             resources.ApplyResources(this.firstnameDataGridViewTextBoxColumn, "firstnameDataGridViewTextBoxColumn");
             this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
+            this.firstnameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // secondnameDataGridViewTextBoxColumn
             // 
             this.secondnameDataGridViewTextBoxColumn.DataPropertyName = "second_name";
             resources.ApplyResources(this.secondnameDataGridViewTextBoxColumn, "secondnameDataGridViewTextBoxColumn");
             this.secondnameDataGridViewTextBoxColumn.Name = "secondnameDataGridViewTextBoxColumn";
+            this.secondnameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // thirdnameDataGridViewTextBoxColumn
             // 
             this.thirdnameDataGridViewTextBoxColumn.DataPropertyName = "third_name";
             resources.ApplyResources(this.thirdnameDataGridViewTextBoxColumn, "thirdnameDataGridViewTextBoxColumn");
             this.thirdnameDataGridViewTextBoxColumn.Name = "thirdnameDataGridViewTextBoxColumn";
+            this.thirdnameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // genderDataGridViewTextBoxColumn
             // 
             this.genderDataGridViewTextBoxColumn.DataPropertyName = "gender";
             resources.ApplyResources(this.genderDataGridViewTextBoxColumn, "genderDataGridViewTextBoxColumn");
             this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            this.genderDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // birthdateDataGridViewTextBoxColumn
             // 
             this.birthdateDataGridViewTextBoxColumn.DataPropertyName = "birth_date";
             resources.ApplyResources(this.birthdateDataGridViewTextBoxColumn, "birthdateDataGridViewTextBoxColumn");
             this.birthdateDataGridViewTextBoxColumn.Name = "birthdateDataGridViewTextBoxColumn";
+            this.birthdateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // adressDataGridViewTextBoxColumn
             // 
             this.adressDataGridViewTextBoxColumn.DataPropertyName = "adress";
             resources.ApplyResources(this.adressDataGridViewTextBoxColumn, "adressDataGridViewTextBoxColumn");
             this.adressDataGridViewTextBoxColumn.Name = "adressDataGridViewTextBoxColumn";
+            this.adressDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // phoneDataGridViewTextBoxColumn
             // 
             this.phoneDataGridViewTextBoxColumn.DataPropertyName = "phone";
             resources.ApplyResources(this.phoneDataGridViewTextBoxColumn, "phoneDataGridViewTextBoxColumn");
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // studentsBindingSource
             // 
@@ -412,16 +485,92 @@
             // 
             resources.ApplyResources(this.dateTimePicker1, "dateTimePicker1");
             this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Value = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
             // 
             // dateTimePicker2
             // 
             resources.ApplyResources(this.dateTimePicker2, "dateTimePicker2");
             this.dateTimePicker2.Name = "dateTimePicker2";
             // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            resources.GetString("comboBox1.Items"),
+            resources.GetString("comboBox1.Items1")});
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.Name = "comboBox1";
+            // 
+            // sortLabel
+            // 
+            resources.ApplyResources(this.sortLabel, "sortLabel");
+            this.sortLabel.Name = "sortLabel";
+            // 
+            // sortButton
+            // 
+            resources.ApplyResources(this.sortButton, "sortButton");
+            this.sortButton.Name = "sortButton";
+            this.sortButton.UseVisualStyleBackColor = true;
+            this.sortButton.Click += new System.EventHandler(this.sortButton_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            resources.GetString("comboBox2.Items"),
+            resources.GetString("comboBox2.Items1")});
+            resources.ApplyResources(this.comboBox2, "comboBox2");
+            this.comboBox2.Name = "comboBox2";
+            // 
+            // radioButton1
+            // 
+            resources.ApplyResources(this.radioButton1, "radioButton1");
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            resources.ApplyResources(this.radioButton2, "radioButton2");
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton3
+            // 
+            resources.ApplyResources(this.radioButton3, "radioButton3");
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.Name = "label5";
+            // 
+            // radioButton4
+            // 
+            resources.ApplyResources(this.radioButton4, "radioButton4");
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.TabStop = true;
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.radioButton4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.sortButton);
+            this.Controls.Add(this.sortLabel);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.textBox3);
@@ -512,6 +661,22 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ToolStripMenuItem кількістьУчнівУШколіToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem групиЗаДнямиТижняToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem групиУВикладачівToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem групиЗаСтилямиToolStripMenuItem;
+        private System.Windows.Forms.Label sortLabel;
+        private System.Windows.Forms.Button sortButton;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.ToolStripMenuItem проРоботуКлубаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem проГрупуToolStripMenuItem;
     }
 }
 
