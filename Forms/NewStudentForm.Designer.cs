@@ -110,7 +110,7 @@
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(251, 224);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(165, 22);
             this.dateTimePicker1.TabIndex = 5;
             // 
             // genderComboBox
@@ -121,35 +121,35 @@
             "ж"});
             this.genderComboBox.Location = new System.Drawing.Point(252, 189);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(121, 24);
+            this.genderComboBox.Size = new System.Drawing.Size(164, 24);
             this.genderComboBox.TabIndex = 6;
             // 
             // firstNameTextBox
             // 
             this.firstNameTextBox.Location = new System.Drawing.Point(252, 81);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(100, 22);
+            this.firstNameTextBox.Size = new System.Drawing.Size(164, 22);
             this.firstNameTextBox.TabIndex = 7;
             // 
             // secondNameTextBox
             // 
             this.secondNameTextBox.Location = new System.Drawing.Point(252, 115);
             this.secondNameTextBox.Name = "secondNameTextBox";
-            this.secondNameTextBox.Size = new System.Drawing.Size(100, 22);
+            this.secondNameTextBox.Size = new System.Drawing.Size(164, 22);
             this.secondNameTextBox.TabIndex = 8;
             // 
             // thirdNameTextBox
             // 
             this.thirdNameTextBox.Location = new System.Drawing.Point(252, 152);
             this.thirdNameTextBox.Name = "thirdNameTextBox";
-            this.thirdNameTextBox.Size = new System.Drawing.Size(100, 22);
+            this.thirdNameTextBox.Size = new System.Drawing.Size(164, 22);
             this.thirdNameTextBox.TabIndex = 9;
             // 
             // phoneTextBox
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(252, 332);
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(100, 22);
+            this.phoneTextBox.Size = new System.Drawing.Size(164, 22);
             this.phoneTextBox.TabIndex = 10;
             // 
             // label6
@@ -174,7 +174,7 @@
             // 
             this.adressTextBox.Location = new System.Drawing.Point(251, 263);
             this.adressTextBox.Name = "adressTextBox";
-            this.adressTextBox.Size = new System.Drawing.Size(157, 59);
+            this.adressTextBox.Size = new System.Drawing.Size(165, 59);
             this.adressTextBox.TabIndex = 14;
             this.adressTextBox.Text = "";
             // 
@@ -200,11 +200,13 @@
             // styleComboBox
             // 
             this.styleComboBox.DataSource = this.stylesBindingSource;
+            this.styleComboBox.DisplayMember = "style_name";
             this.styleComboBox.FormattingEnabled = true;
             this.styleComboBox.Location = new System.Drawing.Point(251, 371);
             this.styleComboBox.Name = "styleComboBox";
-            this.styleComboBox.Size = new System.Drawing.Size(101, 24);
+            this.styleComboBox.Size = new System.Drawing.Size(165, 24);
             this.styleComboBox.TabIndex = 18;
+            this.styleComboBox.ValueMember = "style_id";
             // 
             // stylesBindingSource
             // 

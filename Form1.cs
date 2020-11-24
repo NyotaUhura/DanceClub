@@ -1078,6 +1078,8 @@ namespace DanceClub
             NewStudentForm nsf = new NewStudentForm();
             nsf.ShowDialog();
             studentsTableAdapter.Fill(danceclubdbDataSet.students);
+            
+            student_groupTableAdapter.Fill(danceclubdbDataSet.student_group);
             danceclubdbDataSet.AcceptChanges();
         }
 
