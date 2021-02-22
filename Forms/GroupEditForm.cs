@@ -50,6 +50,10 @@ namespace DanceClub.Forms
         private void button1_Click(object sender, EventArgs e)
         {
             CheckAll();
+            if (!isChecked)
+            {
+                return;
+            }
             if (isChecked)
             {
                 if (!edit)
@@ -64,8 +68,8 @@ namespace DanceClub.Forms
                         Convert.ToInt32(teacherComboBox.SelectedValue), Convert.ToInt32(ageComboBox.SelectedValue),
                         Convert.ToInt32(styleComboBox.SelectedValue), ID);
                 }
-                Close();
             }
+            Close();
         }
 
         //Проверки.
@@ -96,13 +100,13 @@ namespace DanceClub.Forms
 
         private void CheckAll()
         {
-            if (!CheckPrice())
-            {
-                MessageBox.Show("Невірно введено ціну.", "Error", MessageBoxButtons.OKCancel);
-            }
-            else if (!CheckNotNull())
+            if (!CheckNotNull())
             {
                 MessageBox.Show("Не всі поля заповнені.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else if (!CheckPrice())
+            {
+                MessageBox.Show("Невірно введено ціну.", "Error", MessageBoxButtons.OKCancel);
             }
             else
             {
@@ -121,6 +125,11 @@ namespace DanceClub.Forms
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void GroupEditForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

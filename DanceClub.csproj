@@ -33,11 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942" />
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>packages\CrystalDecisions.CrystalReports.Engine.1.0.0\lib\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.11.4.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604" />
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="K4os.Compression.LZ4.Streams, Version=1.1.11.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d" />
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -73,10 +78,19 @@
     <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="danceclubdbDataSet.cs">
+      <DependentUpon>danceclubdbDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="danceclubdbDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>danceclubdbDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AgeEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AgeEditForm.Designer.cs">
+      <DependentUpon>AgeEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Group.cs" />
     <Compile Include="Forms\GroupEditForm.cs">
@@ -109,6 +123,12 @@
     <Compile Include="Forms\ReportsForm.Designer.cs">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\StudentGroupEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentGroupEditForm.Designer.cs">
+      <DependentUpon>StudentGroupEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StudentsInStylesQueryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +146,18 @@
     </Compile>
     <Compile Include="Forms\StudentsInSchoolQueryForm.Designer.cs">
       <DependentUpon>StudentsInSchoolQueryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StyleEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StyleEditForm.Designer.cs">
+      <DependentUpon>StyleEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TeacherEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TeacherEditForm.Designer.cs">
+      <DependentUpon>TeacherEditForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\WorkoutEditForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +181,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DanceClubReport.rdlc" />
+    <EmbeddedResource Include="Forms\AgeEditForm.resx">
+      <DependentUpon>AgeEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GroupEditForm.resx">
       <DependentUpon>GroupEditForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +196,12 @@
     <EmbeddedResource Include="Forms\Report1.rdlc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ReportsForm.resx">
+      <DependentUpon>ReportsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentGroupEditForm.resx">
+      <DependentUpon>StudentGroupEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentsInStylesQueryForm.resx">
       <DependentUpon>StudentsInStylesQueryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +210,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StudentsInSchoolQueryForm.resx">
       <DependentUpon>StudentsInSchoolQueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\styleEditForm.resx">
+      <DependentUpon>StyleEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TeacherEditForm.resx">
+      <DependentUpon>TeacherEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WorkoutEditForm.resx">
       <DependentUpon>WorkoutEditForm.cs</DependentUpon>

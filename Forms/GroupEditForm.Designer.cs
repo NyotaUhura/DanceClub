@@ -51,6 +51,7 @@
             this.teachersTableAdapter = new DanceClub.danceclubdbDataSetTableAdapters.teachersTableAdapter();
             this.age_categoriesTableAdapter = new DanceClub.danceclubdbDataSetTableAdapters.age_categoriesTableAdapter();
             this.classesTableAdapter = new DanceClub.danceclubdbDataSetTableAdapters.classesTableAdapter();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.stylesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.danceclubdbDataSet)).BeginInit();
@@ -62,10 +63,12 @@
             // 
             this.styleComboBox.DataSource = this.stylesBindingSource;
             this.styleComboBox.DisplayMember = "style_name";
+            this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.styleComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.styleComboBox.FormattingEnabled = true;
             this.styleComboBox.Location = new System.Drawing.Point(222, 142);
             this.styleComboBox.Name = "styleComboBox";
-            this.styleComboBox.Size = new System.Drawing.Size(121, 24);
+            this.styleComboBox.Size = new System.Drawing.Size(121, 28);
             this.styleComboBox.TabIndex = 0;
             this.styleComboBox.ValueMember = "style_id";
             // 
@@ -88,10 +91,12 @@
             // 
             this.teacherComboBox.DataSource = this.teachersBindingSource;
             this.teacherComboBox.DisplayMember = "second_name";
+            this.teacherComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.teacherComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.teacherComboBox.FormattingEnabled = true;
             this.teacherComboBox.Location = new System.Drawing.Point(222, 265);
             this.teacherComboBox.Name = "teacherComboBox";
-            this.teacherComboBox.Size = new System.Drawing.Size(121, 24);
+            this.teacherComboBox.Size = new System.Drawing.Size(121, 28);
             this.teacherComboBox.TabIndex = 1;
             this.teacherComboBox.ValueMember = "teacher_id";
             // 
@@ -112,16 +117,18 @@
             // 
             // nameTextBox
             // 
+            this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nameTextBox.Location = new System.Drawing.Point(222, 84);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(121, 22);
+            this.nameTextBox.Size = new System.Drawing.Size(121, 26);
             this.nameTextBox.TabIndex = 3;
             // 
             // costTextBox
             // 
+            this.costTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.costTextBox.Location = new System.Drawing.Point(222, 207);
             this.costTextBox.Name = "costTextBox";
-            this.costTextBox.Size = new System.Drawing.Size(121, 22);
+            this.costTextBox.Size = new System.Drawing.Size(121, 26);
             this.costTextBox.TabIndex = 4;
             // 
             // label2
@@ -176,35 +183,40 @@
             // 
             // button1
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button1.BackColor = System.Drawing.Color.SlateGray;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 407);
+            this.button1.ForeColor = System.Drawing.Color.AliceBlue;
+            this.button1.Location = new System.Drawing.Point(12, 397);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(177, 32);
+            this.button1.Size = new System.Drawing.Size(177, 42);
             this.button1.TabIndex = 11;
             this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.SlateGray;
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(222, 407);
+            this.button2.ForeColor = System.Drawing.Color.AliceBlue;
+            this.button2.Location = new System.Drawing.Point(222, 397);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(174, 32);
+            this.button2.Size = new System.Drawing.Size(174, 42);
             this.button2.TabIndex = 12;
             this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // ageComboBox
             // 
             this.ageComboBox.DataSource = this.agecategoriesBindingSource;
             this.ageComboBox.DisplayMember = "age_name";
+            this.ageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ageComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ageComboBox.FormattingEnabled = true;
             this.ageComboBox.Location = new System.Drawing.Point(222, 327);
             this.ageComboBox.Name = "ageComboBox";
-            this.ageComboBox.Size = new System.Drawing.Size(121, 24);
+            this.ageComboBox.Size = new System.Drawing.Size(121, 28);
             this.ageComboBox.TabIndex = 13;
             this.ageComboBox.ValueMember = "age_id";
             // 
@@ -229,10 +241,20 @@
             // 
             this.classesTableAdapter.ClearBeforeFill = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(119, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(168, 17);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "____________________";
+            // 
             // GroupEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(408, 451);
             this.Controls.Add(this.ageComboBox);
             this.Controls.Add(this.button2);
@@ -247,8 +269,11 @@
             this.Controls.Add(this.lable1);
             this.Controls.Add(this.teacherComboBox);
             this.Controls.Add(this.styleComboBox);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GroupEditForm";
-            this.Text = "EditForm";
+            this.Text = "Група";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GroupEditForm_FormClosing);
             this.Load += new System.EventHandler(this.GroupEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.stylesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -284,5 +309,6 @@
         private System.Windows.Forms.BindingSource agecategoriesBindingSource;
         private danceclubdbDataSetTableAdapters.age_categoriesTableAdapter age_categoriesTableAdapter;
         private danceclubdbDataSetTableAdapters.classesTableAdapter classesTableAdapter;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -46,13 +47,14 @@ namespace DanceClub.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (!CheckTime())
+            CheckAll();
+            if (!isChecked)
             {
-                MessageBox.Show("Час має розділятися знаком ':'.", "Error", MessageBoxButtons.OKCancel);
-                //this.Show();
+                return;
             }
             else
             {
+
                 if (!edit)
                 {
                     workoutsTableAdapter.InsertQuery(Convert.ToString(dayComboBox.SelectedValue),
@@ -64,21 +66,7 @@ namespace DanceClub.Forms
                         Convert.ToInt32(groupComboBox.SelectedValue), TimeSpan.Parse(timeTextBox.Text), ID);
                 }
             }
-            
-            
-
-            //if (!edit)
-            //{
-            //    workoutsTableAdapter.InsertQuery(Convert.ToString(dayComboBox.SelectedValue),
-            //        Convert.ToInt32(groupComboBox.SelectedValue), timeTextBox.Text);
-            //}
-            //else
-            //{
-            //    workoutsTableAdapter.UpdateQuery(Convert.ToString(dayComboBox.SelectedValue),
-            //        Convert.ToInt32(groupComboBox.SelectedValue), timeTextBox.Text, ID);
-            //}
-
-            //Close();
+            Close();
         }
 
         //Проверки.
@@ -118,20 +106,47 @@ namespace DanceClub.Forms
             return true;
         }
 
+        private bool CheckNotExist()
+        {
+            string connectionString =
+            "server=localhost;user id=root;password=1969yearofspace;persistsecurityinfo=True;database=danceclubdb";
+
+        MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+            string query = "SELECT * FROM workouts WHERE " + groupComboBox.SelectedValue + " = group_id AND '" + timeTextBox.Text + 
+                "' = start_time AND '"+ dayComboBox.SelectedValue + "' = day_short_name;";
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            DataTable dt = new DataTable();
+            dt.Load(command.ExecuteReader());
+            connection.Close();
+            return dt.Rows.Count == 0;
+
+        }
+
         private void CheckAll()
         {
-            if (!CheckTime())
-            {
-                MessageBox.Show("Невірно введено час.", "Error", MessageBoxButtons.OKCancel);
-            }
-            else if (!CheckNotNull())
+            if (!CheckNotNull())
             {
                 MessageBox.Show("Не всі поля заповнені.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else if (!CheckTime())
+            {
+                MessageBox.Show("Час має розділятися знаком ':'.", "Error", MessageBoxButtons.OKCancel);
+            }
+            else if (!CheckNotExist())
+            {
+                MessageBox.Show("Це заняття вже існує.", "Error", MessageBoxButtons.OKCancel);
             }
             else
             {
                 isChecked = true;
             }
+        }
+
+        private void WorkoutEditForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

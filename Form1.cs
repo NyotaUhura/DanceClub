@@ -5,8 +5,10 @@ using System.Data;
 using System.IO;
 using System.Windows.Forms;
 using Microsoft.Reporting.WebForms;
-
-
+using System.Data.SqlClient;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.Collections.Generic;
 
 namespace DanceClub
 {
@@ -39,7 +41,10 @@ namespace DanceClub
             // TODO: This line of code loads data into the 'danceclubdbDataSet.students' table. You can move, or remove it, as needed.
             this.studentsTableAdapter.Fill(this.danceclubdbDataSet.students);
             dataGridView1.AutoGenerateColumns = true;
-
+            dateTimePicker1.MinDate = DateTime.Today.AddYears(-80);
+            dateTimePicker1.MaxDate = DateTime.Today.AddYears(-3);
+            dateTimePicker2.MinDate = DateTime.Today.AddYears(-80);
+            dateTimePicker2.MaxDate = DateTime.Today.AddYears(-3);
         }
 
         private void eToolStripMenuItem_Click(object sender, EventArgs e)
@@ -100,13 +105,13 @@ namespace DanceClub
             ////
             comboBox2.Visible = true;
             sortLabel.Visible = true;
-            radioButton1.Visible = true;
+            radioButton1.Visible = false;
             radioButton2.Visible = false;
-            radioButton3.Visible = false;
+            radioButton3.Visible = true;
             radioButton4.Visible = true;
             sortButton.Visible = true;
 
-            radioButton1.Text = "Ціна";
+            radioButton3.Text = "Ціна";
         }
 
         private void заняттяToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,15 +134,15 @@ namespace DanceClub
 
 
             ////
-            comboBox1.Visible = true;
+            comboBox1.Visible = false;
             sortLabel.Visible = true;
-            radioButton1.Visible = true;
+            radioButton1.Visible = false;
             radioButton2.Visible = false;
-            radioButton3.Visible = false;
+            radioButton3.Visible = true;
             radioButton4.Visible = true;
             sortButton.Visible = true;
 
-            radioButton1.Text = "Час початку";
+            radioButton3.Text = "Час початку";
         }
 
         private void викладачіToolStripMenuItem_Click(object sender, EventArgs e)
@@ -189,13 +194,13 @@ namespace DanceClub
             ////
             comboBox2.Visible = true;
             sortLabel.Visible = true;
-            radioButton1.Visible = true;
+            radioButton1.Visible = false;
             radioButton2.Visible = false;
-            radioButton3.Visible = false;
+            radioButton3.Visible = true;
             radioButton4.Visible = true;
             sortButton.Visible = true;
 
-            radioButton1.Text = "Дата початку";
+            radioButton3.Text = "Дата початку";
         }
 
         private void стиліТанцюToolStripMenuItem_Click(object sender, EventArgs e)
@@ -216,6 +221,8 @@ namespace DanceClub
             ////
             comboBox1.Visible = false;
             sortLabel.Visible = false;
+            comboBox2.Visible = false;
+            label5.Visible = false;
             radioButton1.Visible = false;
             radioButton2.Visible = false;
             radioButton3.Visible = false;
@@ -240,16 +247,16 @@ namespace DanceClub
             label1.Text = "Вік";
 
             ////
-            comboBox1.Visible = true;
+            comboBox2.Visible = true;
             sortLabel.Visible = true;
-            radioButton1.Visible = true;
+            radioButton1.Visible = false;
             radioButton2.Visible = true;
-            radioButton3.Visible = false;
+            radioButton3.Visible = true;
             radioButton4.Visible = true;
             sortButton.Visible = true;
 
-            radioButton1.Text = "Мінімальний вік";
-            radioButton1.Text = "Максимальний вік";
+            radioButton2.Text = "Мінімальний вік";
+            radioButton3.Text = "Максимальний вік";
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -269,8 +276,7 @@ namespace DanceClub
 
         }
 
-        //Редактирование.
-
+        
         //Добавление.
         private void додатиToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -300,6 +306,38 @@ namespace DanceClub
                         danceclubdbDataSet.AcceptChanges();
                         break;
                     }
+                case "Викладачі":
+                    {
+                        TeacherEditForm sef = new TeacherEditForm();
+                        sef.ShowDialog();
+                        teachersTableAdapter.Fill(danceclubdbDataSet.teachers);
+                        danceclubdbDataSet.AcceptChanges();
+                        break;
+                    }
+                case "Студент-група":
+                    {
+                        StudentGroupEditForm sef = new StudentGroupEditForm();
+                        sef.ShowDialog();
+                        student_groupTableAdapter.Fill(danceclubdbDataSet.student_group);
+                        danceclubdbDataSet.AcceptChanges();
+                        break;
+                    }
+                case "Стилі танцю":
+                    {
+                        StyleEditForm sef = new StyleEditForm();
+                        sef.ShowDialog();
+                        stylesTableAdapter.Fill(danceclubdbDataSet.styles);
+                        danceclubdbDataSet.AcceptChanges();
+                        break;
+                    }
+                case "Вікові категорії":
+                    {
+                        AgeEditForm aef = new AgeEditForm();
+                        aef.ShowDialog();
+                        age_categoriesTableAdapter.Fill(danceclubdbDataSet.age_categories);
+                        danceclubdbDataSet.AcceptChanges();
+                        break;
+                    }
                 default:
                     break;
             }
@@ -308,7 +346,7 @@ namespace DanceClub
         //Удаление.
         private void видалитиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var res = MessageBox.Show($"Delete?", "Сonfirmation", MessageBoxButtons.YesNo);
+            var res = MessageBox.Show($"Видалити?", "Сonfirmation", MessageBoxButtons.YesNo);
             switch (res)
             {
                 case DialogResult.Yes:
@@ -335,6 +373,34 @@ namespace DanceClub
                                 danceclubdbDataSet.AcceptChanges();
                                 break;
                             }
+                        case "Викладачі":
+                            {
+                                teachersTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                                teachersTableAdapter.Fill(danceclubdbDataSet.teachers);
+                                danceclubdbDataSet.AcceptChanges();
+                                break;
+                            }
+                        case "Студент-група":
+                            {
+                                student_groupTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                                student_groupTableAdapter.Fill(danceclubdbDataSet.student_group);
+                                danceclubdbDataSet.AcceptChanges();
+                                break;
+                            }
+                        case "Стилі танцю":
+                            {
+                                stylesTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                                stylesTableAdapter.Fill(danceclubdbDataSet.styles);
+                                danceclubdbDataSet.AcceptChanges();
+                                break;
+                            }
+                        case "Вікові категорії":
+                            {
+                                age_categoriesTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                                age_categoriesTableAdapter.Fill(danceclubdbDataSet.age_categories);
+                                danceclubdbDataSet.AcceptChanges();
+                                break;
+                            }
                         default:
                             break;
                     }
@@ -343,32 +409,7 @@ namespace DanceClub
                     break;
 
             }
-            //switch (tableNameLable.Text)
-            //{
-            //    case "Групи":
-            //    {
-            //        classesTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-            //        classesTableAdapter.Fill(danceclubdbDataSet.classes);
-            //        danceclubdbDataSet.AcceptChanges();
-            //        break;
-            //    }
-            //    case "Учні":
-            //    {
-            //        studentsTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-            //        studentsTableAdapter.Fill(danceclubdbDataSet.students);
-            //        danceclubdbDataSet.AcceptChanges();
-            //        break;
-            //    }
-            //    case "Заняття":
-            //    {
-            //        workoutsTableAdapter.DeleteQuery(Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
-            //        workoutsTableAdapter.Fill(danceclubdbDataSet.workouts);
-            //        danceclubdbDataSet.AcceptChanges();
-            //        break;
-            //    }
-            //    default:
-            //        break;
-            //}
+           
         }
 
         //Редактирование.
@@ -393,10 +434,6 @@ namespace DanceClub
                         var sdt = new danceclubdbDataSet.studentsDataTable();
                         studentsTableAdapter.FillBy(sdt, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
                         var row = sdt.Rows[0].ItemArray;
-                        //var ed = new StudentEditForm(Convert.ToInt32(row[7]), row[0].ToString(), row[1].ToString(),
-                        //    row[2].ToString(), row[3].ToString(), 
-                        //    new DateTime(Convert.ToInt32((row[4]).ToString().Split('.')[2]), Convert.ToInt32((row[4]).ToString().Split('.')[1]), Convert.ToInt32((row[4]).ToString().Split('.')[0])), 
-                        //    row[5].ToString(), row[6].ToString());
 
                         var ed = new StudentEditForm(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(),
                             row[3].ToString(), row[4].ToString(), Convert.ToDateTime(row[5]),
@@ -415,6 +452,56 @@ namespace DanceClub
                             TimeSpan.Parse(Convert.ToString(row[3])));
                         ed.ShowDialog();
                         workoutsTableAdapter.Fill(danceclubdbDataSet.workouts);
+                        danceclubdbDataSet.AcceptChanges();
+                        break;
+                    }
+                case "Викладачі":
+                    {
+                        var tdt = new danceclubdbDataSet.teachersDataTable();
+                        teachersTableAdapter.FillBy(tdt, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        var row = tdt.Rows[0].ItemArray;
+
+                        var ed = new TeacherEditForm(Convert.ToInt32(row[0]), row[1].ToString(), row[2].ToString(),
+                            row[3].ToString(), row[4].ToString());
+                        ed.ShowDialog();
+                        teachersTableAdapter.Fill(danceclubdbDataSet.teachers);
+                        danceclubdbDataSet.AcceptChanges();
+                        break;
+                    }
+                case "Студент-група":
+                    {
+                        MessageBox.Show("Неможливо редагувати.");
+                        //var sgdt = new danceclubdbDataSet.student_groupDataTable();
+                        //student_groupTableAdapter.FillBy(sgdt, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        //var row = sgdt.Rows[0].ItemArray;
+                        //var ed = new StudentGroupEditForm(Convert.ToInt32(row[0]), Convert.ToInt32(row[1]), Convert.ToInt32(row[2]),
+                        //    Convert.ToDateTime(row[3]));
+                        //ed.ShowDialog();
+                        //student_groupTableAdapter.Fill(danceclubdbDataSet.student_group);
+                        //danceclubdbDataSet.AcceptChanges();
+                        break;
+                    }
+                case "Стилі танцю":
+                    {
+                        var sdt = new danceclubdbDataSet.stylesDataTable();
+                        stylesTableAdapter.FillBy(sdt, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        var row = sdt.Rows[0].ItemArray;
+
+                        var ed = new StyleEditForm(Convert.ToInt32(row[0]), row[1].ToString());
+                        ed.ShowDialog();
+                        stylesTableAdapter.Fill(danceclubdbDataSet.styles);
+                        danceclubdbDataSet.AcceptChanges();
+                        break;
+                    }
+                case "Вікові категорії":
+                    {
+                        var adt = new danceclubdbDataSet.age_categoriesDataTable();
+                        age_categoriesTableAdapter.FillBy(adt, Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+                        var row = adt.Rows[0].ItemArray;
+
+                        var ed = new AgeEditForm(Convert.ToInt32(row[0]), row[1].ToString(), Convert.ToInt32(row[2]), Convert.ToInt32(row[3]));
+                        ed.ShowDialog();
+                        age_categoriesTableAdapter.Fill(danceclubdbDataSet.age_categories);
                         danceclubdbDataSet.AcceptChanges();
                         break;
                     }
@@ -491,7 +578,7 @@ namespace DanceClub
             {
                 if (comboBox2.Text == "за зростанням")
                 {
-                    if (radioButton1.Checked)
+                    if (radioButton3.Checked)
                     {
                         query =
                             "SELECT * FROM classes ORDER BY cost ASC; ";
@@ -504,7 +591,7 @@ namespace DanceClub
                 }
                 else if (comboBox2.Text == "за спаданням")
                 {
-                    if (radioButton1.Checked)
+                    if (radioButton3.Checked)
                     {
                         query =
                             "SELECT * FROM classes ORDER BY cost DESC; ";
@@ -527,7 +614,7 @@ namespace DanceClub
             {
                 if (comboBox2.Text == "за зростанням")
                 {
-                    if (radioButton1.Checked)
+                    if (radioButton3.Checked)
                     {
                         query =
                             "SELECT * FROM workouts ORDER BY start_time ASC; ";
@@ -540,7 +627,7 @@ namespace DanceClub
                 }
                 else if (comboBox2.Text == "за спаданням")
                 {
-                    if (radioButton1.Checked)
+                    if (radioButton3.Checked)
                     {
                         query =
                             "SELECT * FROM workouts ORDER BY start_time DESC; ";
@@ -620,7 +707,7 @@ namespace DanceClub
             {
                 if (comboBox2.Text == "за зростанням")
                 {
-                    if (radioButton1.Checked)
+                    if (radioButton3.Checked)
                     {
                         query =
                             "SELECT * FROM student_group ORDER BY start_date ASC; ";
@@ -633,7 +720,7 @@ namespace DanceClub
                 }
                 else if (comboBox2.Text == "за спаданням")
                 {
-                    if (radioButton1.Checked)
+                    if (radioButton3.Checked)
                     {
                         query =
                             "SELECT * FROM student_group ORDER BY start_date DESC; ";
@@ -692,12 +779,12 @@ namespace DanceClub
             {
                 if (comboBox2.Text == "за зростанням")
                 {
-                    if (radioButton1.Checked)
+                    if (radioButton2.Checked)
                     {
                         query =
                             "SELECT * FROM age_categories ORDER BY min_age ASC; ";
                     }
-                    else if (radioButton1.Checked)
+                    else if (radioButton3.Checked)
                     {
                         query =
                             "SELECT * FROM age_categories ORDER BY max_age ASC; ";
@@ -710,12 +797,12 @@ namespace DanceClub
                 }
                 else if (comboBox2.Text == "за спаданням")
                 {
-                    if (radioButton1.Checked)
+                    if (radioButton2.Checked)
                     {
                         query =
                             "SELECT * FROM age_categories ORDER BY min_age DESC; ";
                     }
-                    else if (radioButton2.Checked)
+                    else if (radioButton3.Checked)
                     {
                         query =
                             "SELECT * FROM age_categories ORDER BY max_age DESC; ";
@@ -930,7 +1017,7 @@ namespace DanceClub
                 {
                     if (textBox3.Text != "")
                     {
-                        query = "SELECT * FROM workouts WHERE start_time >= '"
+                        query = "SELECT * FROM workouts WHERE start_time <= '"
                                 + textBox3.Text + ":00'; ";
                     }
                     else
@@ -1086,66 +1173,278 @@ namespace DanceClub
 
 
         //Отчеты. 
+
         private void проРоботуКлубаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExportToPDF();
-        }
+            var styleColomn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Стиль"
+            };
+            var benefitColomn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Прибуток"
+            };
+            var studentsNumColomn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Кількість учнів"
+            };
 
-        private void ExportToPDF()
-        {
-            string deviceInfo = "";
-            string[] streamIDs;
-            Warning[] warnings;
+            DataGridView dataGridView2 = new DataGridView();
+            dataGridView2.Columns.AddRange(
+                styleColomn, benefitColomn, studentsNumColomn
+                );
 
-            string mimeType = string.Empty;
-            string encoding = string.Empty;
-            string extension = string.Empty;
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+            string query;
 
-            ReportViewer viewer = new ReportViewer();
-            viewer.ProcessingMode = ProcessingMode.Local;
-            viewer.LocalReport.ReportPath = "DanceClubReport.rdlc";
-            viewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1",danceclubdbDataSet.Tables["students"]));
-            //viewer.RefreshReport();
-            //viewer.ReportRefresh();
-            viewer.LocalReport.Refresh();
+            query = "SELECT Styles.style_name, SUM(Classes.cost * (SELECT COUNT(student_id) FROM student_group WHERE group_id = classes.group_id)), "
+                + " (SELECT COUNT(student_id) FROM student_group WHERE student_group.group_id IN(SELECT group_id FROM Classes WHERE classes.style_id = styles.style_id))"
+                + " FROM Styles NATURAL JOIN Classes"
+                + " Group by style_name; ";
 
-            var bytes = viewer.LocalReport.Render("PDF", deviceInfo, out mimeType, out encoding,
-            out extension, out streamIDs, out warnings);
+            MySqlCommand command = new MySqlCommand(query, connection);
+            var srt = command.ExecuteReader();
+            var list = new List<List<string>>();
+            while (srt.Read())
+            {
+                var lst = new List<string>();
+                for (var i = 0; i < srt.FieldCount; i++)
+                {
+                    lst.Add(srt[i].ToString());
+                }
+                list.Add(lst);
+            }
 
-            string fileName = @"C:\Users\Anastasiya\Desktop\NURE\year_2\Course project\DanceClub\Reports\report1.pdf";
-            File.WriteAllBytes(fileName, bytes);
-            System.Diagnostics.Process.Start(fileName);
-        }
+            connection.Close();
+            foreach (var t in list)
+            {
+                dataGridView2.Rows.Add(t[0], t[1], t[2]);
+            }
 
-        private void ExportToPDF2()
-        {
-            string deviceInfo = "";
-            string[] streamIDs;
-            Warning[] warnings;
+            /////////////////////////
+            if (dataGridView2.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Звіт 'Про стилі'.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("Ошибка1." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+                        var baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                        var font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
 
-            string mimeType = string.Empty;
-            string encoding = string.Empty;
-            string extension = string.Empty;
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(dataGridView2.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase("Звіт 'Про стилі'", font));
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase(DateTime.Now.ToString(), font));
 
-            ReportViewer viewer = new ReportViewer();
-            viewer.ProcessingMode = ProcessingMode.Local;
-            viewer.LocalReport.ReportPath = "GroupsReport.rdlc";
-            viewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", danceclubdbDataSet.Tables["classes"]));
-            //viewer.RefreshReport();
-            //viewer.ReportRefresh();
-            viewer.LocalReport.Refresh();
+                            pdfTable.CompleteRow();
+                            foreach (DataGridViewColumn column in dataGridView2.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, font));
+                                pdfTable.AddCell(cell);
+                            }
 
-            var bytes = viewer.LocalReport.Render("PDF", deviceInfo, out mimeType, out encoding,
-                out extension, out streamIDs, out warnings);
+                            foreach (DataGridViewRow row in dataGridView2.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    if (cell.Value != null)
+                                        pdfTable.AddCell(new Phrase(cell.Value.ToString(), font));
+                                }
+                            }
 
-            string fileName = @"C:\Users\Anastasiya\Desktop\NURE\year_2\Course project\DanceClub\Reports\report2.pdf";
-            File.WriteAllBytes(fileName, bytes);
-            System.Diagnostics.Process.Start(fileName);
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+
+                            }
+
+                            MessageBox.Show("Звіт успішно сформовано", "Info");
+                            System.Diagnostics.Process.Start("Звіт 'Про стилі'.pdf");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ошибка2 :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ошибка3", "Info");
+            }
         }
 
         private void проГрупуToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ExportToPDF2();
+        { 
+            var groupNameColomn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Назва групи"
+            };
+            var styleColomn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Стиль"
+            };
+            var teacherColomn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Викладач"
+            };
+            var benefitColomn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Прибуток"
+            };
+            var studentsNumColomn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Кількість учнів"
+            };
+
+            DataGridView dataGridView2 = new DataGridView();
+            dataGridView2.Columns.AddRange(
+                groupNameColomn, styleColomn, teacherColomn, benefitColomn, studentsNumColomn
+                );
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+            string query;
+
+            query = "SELECT Classes.group_name, Styles.style_name, CONCAT(Teachers.second_name, ' ', Teachers.first_name, ' ', Teachers.third_name) As Teacher,"
+                + " (Classes.cost * (SELECT COUNT(student_id) FROM student_group WHERE group_id = classes.group_id)) As Benefit,"
+                + " (SELECT COUNT(student_id) FROM student_group WHERE group_id = classes.group_id) As StudentNum"
+                + " FROM Classes NATURAL JOIN Styles NATURAL JOIN Teachers"
+                + " GROUP BY group_name, style_name, second_name, first_name, third_name"
+                + " ORDER BY group_name ASC; ";
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            var srt = command.ExecuteReader();
+            var list = new List<List<string>>();
+            while (srt.Read())
+            {
+                var lst = new List<string>();
+                for(var i = 0; i < srt.FieldCount; i++)
+                {
+                    lst.Add(srt[i].ToString());
+                }
+                 list.Add(lst);
+            }
+
+            connection.Close();
+            foreach(var t in list)
+            {
+                dataGridView2.Rows.Add(t[0], t[1], t[2], t[3], t[4]);
+            }
+
+            /////////////////////////
+            if (dataGridView2.Rows.Count > 0)
+            {
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.Filter = "PDF (*.pdf)|*.pdf";
+                sfd.FileName = "Звіт 'Про групи'.pdf";
+                bool fileError = false;
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    if (File.Exists(sfd.FileName))
+                    {
+                        try
+                        {
+                            File.Delete(sfd.FileName);
+                        }
+                        catch (IOException ex)
+                        {
+                            fileError = true;
+                            MessageBox.Show("Ошибка1." + ex.Message);
+                        }
+                    }
+                    if (!fileError)
+                    {
+                        string ttf = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIAL.TTF");
+                        var baseFont = BaseFont.CreateFont(ttf, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+                        var font = new iTextSharp.text.Font(baseFont, iTextSharp.text.Font.DEFAULTSIZE, iTextSharp.text.Font.NORMAL);
+
+                        try
+                        {
+                            PdfPTable pdfTable = new PdfPTable(dataGridView2.Columns.Count);
+                            pdfTable.DefaultCell.Padding = 3;
+                            pdfTable.WidthPercentage = 100;
+                            pdfTable.HorizontalAlignment = Element.ALIGN_LEFT;
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase("Звіт 'Про групи'", font));
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase(" ", font));
+                            pdfTable.AddCell(new Phrase(DateTime.Now.ToString(), font));
+
+                            pdfTable.CompleteRow();
+                            foreach (DataGridViewColumn column in dataGridView2.Columns)
+                            {
+                                PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText, font));
+                                pdfTable.AddCell(cell);
+                            }
+
+                            foreach (DataGridViewRow row in dataGridView2.Rows)
+                            {
+                                foreach (DataGridViewCell cell in row.Cells)
+                                {
+                                    if (cell.Value != null)
+                                        pdfTable.AddCell(new Phrase(cell.Value.ToString(), font));
+                                }
+                            }
+
+                            using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                Document pdfDoc = new Document(PageSize.A4, 10f, 20f, 20f, 10f);
+                                PdfWriter.GetInstance(pdfDoc, stream);
+                                pdfDoc.Open();
+                                pdfDoc.Add(pdfTable);
+                                pdfDoc.Close();
+                                stream.Close();
+
+                            }
+                            
+                            MessageBox.Show("Звіт успішно сформовано", "Info");
+                            System.Diagnostics.Process.Start("Звіт 'Про групи'.pdf");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Ошибка2 :" + ex.Message);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ошибка3", "Info");
+            }
         }
     }
 

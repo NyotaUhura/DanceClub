@@ -28,7 +28,7 @@ namespace DanceClub.Forms
             connection.Open();
             string query;
 
-            query = "SELECT COUNT(student_id) as Number, AVG(YEAR(NOW())-YEAR(birth_date)) as Average_age FROM students;";
+            query = "SELECT COUNT(student_id) as 'Кількість учнів', ROUND(AVG(YEAR(NOW())-YEAR(birth_date)), 1) as 'Середній вік' FROM students;";
 
 
             MySqlCommand command = new MySqlCommand(query, connection);

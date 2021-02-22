@@ -46,6 +46,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.adressTextBox = new System.Windows.Forms.RichTextBox();
             this.phoneTextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.danceclubdbDataSet = new DanceClub.danceclubdbDataSet();
             this.studentsTableAdapter = new DanceClub.danceclubdbDataSetTableAdapters.studentsTableAdapter();
@@ -55,26 +56,29 @@
             // 
             // button1
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button1.BackColor = System.Drawing.Color.SlateGray;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(12, 406);
+            this.button1.ForeColor = System.Drawing.Color.AliceBlue;
+            this.button1.Location = new System.Drawing.Point(12, 398);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(170, 32);
+            this.button1.Size = new System.Drawing.Size(170, 40);
             this.button1.TabIndex = 0;
             this.button1.Text = "OK";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.SlateGray;
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(224, 406);
+            this.button2.ForeColor = System.Drawing.Color.AliceBlue;
+            this.button2.Location = new System.Drawing.Point(224, 398);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 32);
+            this.button2.Size = new System.Drawing.Size(166, 40);
             this.button2.TabIndex = 1;
             this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -182,6 +186,7 @@
             // 
             // genderComboBox
             // 
+            this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Items.AddRange(new object[] {
@@ -221,6 +226,15 @@
             this.phoneTextBox.Size = new System.Drawing.Size(185, 26);
             this.phoneTextBox.TabIndex = 16;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(104, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(200, 17);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "________________________";
+            // 
             // bindingSource1
             // 
             this.bindingSource1.DataMember = "students";
@@ -239,6 +253,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(402, 450);
             this.Controls.Add(this.phoneTextBox);
             this.Controls.Add(this.adressTextBox);
@@ -257,8 +272,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.label9);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "StudentEditForm";
-            this.Text = "StudentEdiForm";
+            this.Text = "Учень";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StudentEditForm_FormClosing);
             this.Load += new System.EventHandler(this.StudentEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.danceclubdbDataSet)).EndInit();
@@ -289,5 +307,6 @@
         private System.Windows.Forms.BindingSource bindingSource1;
         private danceclubdbDataSet danceclubdbDataSet;
         private danceclubdbDataSetTableAdapters.studentsTableAdapter studentsTableAdapter;
+        private System.Windows.Forms.Label label9;
     }
 }
