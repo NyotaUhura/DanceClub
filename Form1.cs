@@ -1173,7 +1173,7 @@ namespace DanceClub
 
 
         //Отчеты. 
-
+         
         private void проРоботуКлубаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var styleColomn = new DataGridViewTextBoxColumn
